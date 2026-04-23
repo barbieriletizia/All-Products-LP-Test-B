@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
     <title>Stripe · Home</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,6 +15,15 @@
     <link rel="stylesheet" href="homepage.css" />
   </head>
   <body class="home-page home-page-body">
+    <script>
+      (function () {
+        var KEY = "stripe_lp_unlock";
+        try {
+          if (sessionStorage.getItem(KEY) === "1") return;
+        } catch (e) {}
+        location.replace("gate.html");
+      })();
+    </script>
     <div class="page-frame">
       <div class="home-hero-stage">
       <div class="home-hero__art" aria-hidden="true">
@@ -808,8 +818,11 @@
 
     <script src="homepage.js" defer></script>
     <script type="module">
-      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        import("./assets/js/NouveauBloomWave/NouveauBloomWave.js");
+      if (
+        !window.matchMedia("(prefers-reduced-motion: reduce)").matches &&
+        location.protocol !== "file:"
+      ) {
+        import("./assets/js/NouveauBloomWave/NouveauBloomWave.js").catch(function () {});
       }
     </script>
   </body>

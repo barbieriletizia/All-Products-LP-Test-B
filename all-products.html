@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
     <title>All products · Stripe</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,6 +15,15 @@
     <link rel="stylesheet" href="homepage.css" />
   </head>
   <body>
+    <script>
+      (function () {
+        var KEY = "stripe_lp_unlock";
+        try {
+          if (sessionStorage.getItem(KEY) === "1") return;
+        } catch (e) {}
+        location.replace("gate.html");
+      })();
+    </script>
     <div class="page">
       <div class="page-top-art">
       <div class="page-top-art__mesh-clip" aria-hidden="true">
@@ -347,6 +357,9 @@
                 name="q"
                 placeholder="Search for a product"
                 autocomplete="off"
+                spellcheck="false"
+                autocorrect="off"
+                autocapitalize="off"
                 aria-expanded="false"
                 aria-controls="search-popover"
                 aria-autocomplete="list"
@@ -383,13 +396,10 @@
                   id="search-suggestions-list"
                   class="search-popover__list"
                   role="listbox"
-                  aria-label="Matches from this page"
+                  aria-label="Products, product areas, and use cases"
                 ></ul>
                 <p id="search-suggestions-empty" class="search-popover__empty" hidden>
-                  No matching content on this page.
-                </p>
-                <p id="search-suggestions-prompt" class="search-popover__prompt" hidden>
-                  Start typing to search this page.
+                  No matching products or filters.
                 </p>
               </div>
               <div class="search-popover__footer">
@@ -1432,156 +1442,41 @@
         var input = document.getElementById("search-input");
         var list = document.getElementById("search-suggestions-list");
         var empty = document.getElementById("search-suggestions-empty");
-        var prompt = document.getElementById("search-suggestions-prompt");
         if (!wrap || !btn || !pop || !list) return;
 
         var index = [];
 
-        var STOP_WORDS = {
-          a: 1,
-          an: 1,
-          and: 1,
-          are: 1,
-          as: 1,
-          at: 1,
-          be: 1,
-          been: 1,
-          being: 1,
-          but: 1,
-          by: 1,
-          can: 1,
-          did: 1,
-          do: 1,
-          does: 1,
-          for: 1,
-          from: 1,
-          had: 1,
-          has: 1,
-          have: 1,
-          how: 1,
-          in: 1,
-          into: 1,
-          is: 1,
-          it: 1,
-          its: 1,
-          may: 1,
-          more: 1,
-          no: 1,
-          not: 1,
-          of: 1,
-          on: 1,
-          or: 1,
-          our: 1,
-          shall: 1,
-          should: 1,
-          so: 1,
-          such: 1,
-          than: 1,
-          that: 1,
-          the: 1,
-          their: 1,
-          these: 1,
-          they: 1,
-          this: 1,
-          those: 1,
-          to: 1,
-          too: 1,
-          up: 1,
-          was: 1,
-          we: 1,
-          were: 1,
-          what: 1,
-          when: 1,
-          where: 1,
-          which: 1,
-          who: 1,
-          will: 1,
-          with: 1,
-          would: 1,
-          you: 1,
-          your: 1,
-        };
-
-        function formatKeyword(word) {
-          if (!word) return "";
-          word = String(word).toLowerCase();
-          if (/^[0-9]+(\.[0-9]+)?$/.test(word)) return word;
-          return word.charAt(0).toUpperCase() + word.slice(1);
-        }
-
-        function addKeyword(word) {
-          if (!word) return;
-          word = String(word).replace(/\s+/g, " ").trim().toLowerCase();
-          if (word.length < 2 || STOP_WORDS[word]) return;
-          var label = formatKeyword(word);
-          for (var i = 0; i < index.length; i++) {
-            if (index[i].label.toLowerCase() === label.toLowerCase()) return;
-          }
-          index.push({ label: label, hay: word });
-        }
-
-        function addKeywordsFromText(text) {
-          if (!text) return;
-          var raw = String(text).toLowerCase();
-          var parts = raw.match(/[a-z0-9]+(?:['’][a-z]+)?|[0-9]+[a-z]*/gi);
-          if (!parts) return;
-          parts.forEach(function (w) {
-            var base = w.replace(/['’]/g, "").toLowerCase();
-            addKeyword(base);
-          });
-        }
-
-        function addPhraseAsKeywords(phrase) {
-          if (!phrase) return;
-          phrase = String(phrase).replace(/\s+/g, " ").trim();
-          if (!phrase) return;
-          if (phrase.length <= 48 && phrase.split(/\s+/).length <= 4) {
-            var words = phrase.match(/[a-z0-9]+(?:['’][a-z]+)?|[0-9]+/gi);
-            if (words && words.length <= 4) {
-              words.forEach(function (w) {
-                addKeyword(w.replace(/['’]/g, "").toLowerCase());
-              });
-              return;
-            }
-          }
-          addKeywordsFromText(phrase);
-        }
-
         function buildIndex() {
           index = [];
-          document.querySelectorAll(".lockup-heading").forEach(function (h) {
-            var section = h.closest(".section-block");
-            var body = section && section.querySelector(".lockup-body");
-            addKeywordsFromText(h.textContent);
-            if (body) addKeywordsFromText(body.textContent);
-          });
-          document
-            .querySelectorAll(".hero-title .line-dark, .hero-title .line-muted")
-            .forEach(function (el) {
-              addKeywordsFromText(el.textContent);
+          var selectors = [
+            "#filter-product-areas-panel .filter-multiselect__option span",
+            "#filter-use-cases-panel .filter-multiselect__option span",
+            "#main-content .card-placeholder__label",
+          ];
+          selectors.forEach(function (sel) {
+            document.querySelectorAll(sel).forEach(function (span) {
+              var label = String(span.textContent).replace(/\s+/g, " ").trim();
+              if (!label) return;
+              var hay = label.toLowerCase();
+              var dup = false;
+              for (var j = 0; j < index.length; j++) {
+                if (index[j].hay === hay) {
+                  dup = true;
+                  break;
+                }
+              }
+              if (!dup) index.push({ label: label, hay: hay });
             });
-          document
-            .querySelectorAll("#curator-heading .seg-a, #curator-heading .seg-b")
-            .forEach(function (el) {
-              addKeywordsFromText(el.textContent);
-            });
-          document.querySelectorAll(".breadcrumb-title").forEach(function (el) {
-            addPhraseAsKeywords(el.textContent);
           });
-          document
-            .querySelectorAll(".filter-multiselect .filter-multiselect__option span")
-            .forEach(function (span) {
-              addPhraseAsKeywords(span.textContent);
-            });
-          document.querySelectorAll(".footer-directory a").forEach(function (a) {
-            addPhraseAsKeywords(a.textContent);
-          });
-          document.querySelectorAll(".footer-promo__heading, .footer-promo__lede").forEach(function (el) {
-            addKeywordsFromText(el.textContent);
-          });
-          document.querySelectorAll(".footer-card__title").forEach(function (el) {
-            addPhraseAsKeywords(el.textContent);
-          });
+        }
+
+        function prefixRank(item, q) {
+          if (item.hay.startsWith(q)) return 0;
+          var words = item.hay.split(/\s+/);
+          for (var w = 0; w < words.length; w++) {
+            if (words[w].startsWith(q)) return 1 + w;
+          }
+          return -1;
         }
 
         buildIndex();
@@ -1599,11 +1494,10 @@
         function clearPanel() {
           while (list.firstChild) list.removeChild(list.firstChild);
           if (empty) empty.setAttribute("hidden", "");
-          if (prompt) prompt.setAttribute("hidden", "");
         }
 
         var MIN_QUERY_CHARS = 2;
-        var MAX_SUGGESTIONS = 2;
+        var MAX_SUGGESTIONS = 8;
 
         function renderSuggestions(query) {
           clearPanel();
@@ -1611,17 +1505,20 @@
           if (!q || q.length < MIN_QUERY_CHARS) {
             return;
           }
-          var starts = [];
-          var rest = [];
+          var ranked = [];
           for (var i = 0; i < index.length; i++) {
             var item = index[i];
-            if (item.hay.indexOf(q) === -1) continue;
-            var lbl = item.label.toLowerCase();
-            if (lbl.indexOf(q) === 0) starts.push(item.label);
-            else rest.push(item.label);
+            var pr = prefixRank(item, q);
+            if (pr < 0) continue;
+            ranked.push({ label: item.label, rank: pr });
           }
-          var out = starts.concat(rest);
-          out = out.slice(0, MAX_SUGGESTIONS);
+          ranked.sort(function (a, b) {
+            if (a.rank !== b.rank) return a.rank - b.rank;
+            return a.label.localeCompare(b.label);
+          });
+          var out = ranked.slice(0, MAX_SUGGESTIONS).map(function (x) {
+            return x.label;
+          });
 
           if (out.length === 0) {
             if (empty) empty.removeAttribute("hidden");
@@ -1660,13 +1557,7 @@
         function panelFromButton() {
           clearPanel();
           var q = input.value.trim().toLowerCase();
-          if (!q) {
-            if (prompt) prompt.removeAttribute("hidden");
-            setOpen(true);
-            return;
-          }
-          if (q.length < MIN_QUERY_CHARS) {
-            if (prompt) prompt.removeAttribute("hidden");
+          if (!q || q.length < MIN_QUERY_CHARS) {
             setOpen(true);
             return;
           }
