@@ -389,6 +389,12 @@ a {
   border-right: 1px solid var(--color-border-quiet);
 }
 
+/* All products LP: #main-content uses z-index 12 so catalog stacks above mesh; raise guides above main
+   (borders only—center stays pointer-transparent). Below mega menu layer (homepage.css ~401). */
+.page .layout-guides::after {
+  z-index: 14;
+}
+
 /* ----- Filter toolbar ----- */
 .filters-ribbon {
   background: var(--color-surface);
