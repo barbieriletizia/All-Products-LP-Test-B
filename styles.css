@@ -141,25 +141,27 @@ a {
   background-color: #ffffff;
 }
 
+.page-top-art::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 1px;
+  background-color: var(--color-border-quiet);
+  pointer-events: none;
+  /* Above mesh so the bottom stroke stays visible */
+  z-index: 2;
+}
+
 .page-top-art__mesh-clip {
   position: absolute;
   inset: 0;
   overflow: hidden;
-  /* Below header/hero content */
+  /* Below stroke + header/hero content */
   z-index: 1;
   pointer-events: none;
-}
-
-/* All products LP: let the mesh paint past the hero so it overlaps the catalog (sibling stacking below).
-   Height is fixed (not derived from `.page-top-art`) so toggling the active-filters callout doesn’t
-   resize the clip and rescale the bitmap under object-fit: cover. */
-.page > .page-top-art > .page-top-art__mesh-clip {
-  inset: auto;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: auto;
-  height: clamp(680px, 56vw + 380px, 1040px);
 }
 
 .page-top-art__mesh {
@@ -168,7 +170,7 @@ a {
   top: 0;
   bottom: 0;
   /* Center the artwork’s negative space behind the headline; mockup ref Screenshot 2026-04-23 */
-  transform: translate(-50%, -202px) scale(2);
+  transform: translate(-50%, 88px) scale(2);
   transform-origin: center center;
   width: min(130vw, 2000px);
   height: 100%;
@@ -332,7 +334,7 @@ a {
 /* ----- Hero ----- */
 .hero {
   background: transparent;
-  padding: 80px var(--space-page) 0;
+  padding: 80px var(--space-page) 120px;
   text-align: center;
 }
 
@@ -395,17 +397,6 @@ a {
   border-bottom: 1px solid var(--color-border-quiet);
 }
 
-/* All products LP: no stroke under filter toolbar; 64px below hero */
-.page-top-art .filters-ribbon {
-  margin-top: 64px;
-  border-bottom: none;
-  background: transparent;
-}
-
-.page-top-art .filters-bar {
-  background: transparent;
-}
-
 .filters-wrap {
   box-sizing: border-box;
   width: 100%;
@@ -413,10 +404,6 @@ a {
   margin-right: auto;
   padding-left: var(--layout-margin);
   padding-right: var(--layout-margin);
-}
-
-.page-top-art .filters-wrap {
-  max-width: none;
 }
 
 .filters-bar {
@@ -430,47 +417,12 @@ a {
   background: var(--color-surface);
 }
 
-/* Fixed 104px from controls bottom → catalog grid: reserve it as bottom padding and keep the
-   active-filter message out of normal flow so its text never shifts main (`all-products.html`). */
-.page-top-art .filters-bar {
-  position: relative;
-  padding-top: 20px;
-  padding-bottom: 104px;
-}
-
-.page-top-art .filters-bar__track {
-  position: relative;
-  width: 100%;
-}
-
 .filters-bar__controls {
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
   gap: 8px;
   width: 100%;
-}
-
-.page-top-art .filters-bar__controls {
-  box-sizing: border-box;
-  width: 100%;
-  max-width: 1024px;
-  min-width: 0;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Figma widths: search 508px + gaps + Product areas 250px + Use cases 250px = 1024px row */
-.page-top-art .search-field-wrap {
-  flex: 0 0 508px;
-  width: 508px;
-  max-width: min(508px, 100%);
-}
-
-.page-top-art .filter-select-wrap {
-  flex: 0 0 250px;
-  width: 250px;
-  max-width: min(250px, 100%);
 }
 
 .filters-active-callout {
@@ -481,21 +433,8 @@ a {
   justify-content: center;
   gap: 8px 12px;
   padding: 0;
-  margin-top: 0;
+  margin-top: 20px;
   border-top: none;
-}
-
-.page-top-art .filters-active-callout {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: calc(100% + 20px);
-  bottom: auto;
-  flex: none;
-  width: 100%;
-  box-sizing: border-box;
-  padding-left: var(--layout-margin);
-  padding-right: var(--layout-margin);
 }
 
 .filters-active-callout[hidden] {
@@ -565,8 +504,8 @@ a {
   padding: 10px 12px 10px 16px;
   border: 1.25px solid #dfe6ef;
   border-radius: var(--radius-input);
-  background: var(--color-surface);
-  backdrop-filter: none;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(20px);
 }
 
 .search-popover {
@@ -770,11 +709,6 @@ button.select-like {
   margin: 0;
 }
 
-.filter-multiselect .select-like {
-  background: var(--color-surface);
-  backdrop-filter: none;
-}
-
 .filter-multiselect__trigger {
   display: flex;
   align-items: center;
@@ -796,7 +730,7 @@ button.select-like {
   z-index: 100;
   box-sizing: border-box;
   width: 100%;
-  min-width: 0;
+  min-width: min(100%, 280px);
   max-height: min(320px, 70vh);
   padding: 8px;
   overflow-y: auto;
@@ -847,93 +781,10 @@ button.select-like {
 }
 
 /* ----- Lockup + grids ----- */
-main {
-  padding-bottom: 80px;
-}
 
-/* Full-bleed product catalog (no lockup sections).
-   Vertical gap from toolbar → grid is owned by `.page-top-art .filters-bar` padding-bottom (104px). */
-.catalog-section {
-  padding-top: 0;
-  background: transparent;
-}
-
-/* Two card grids with the curator band between them (after the second row at 3 columns). */
-.catalog-stack {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-/* In-catalog curator: white panel with strokes; shell matches 1264 content column like card grids. */
-#full-catalog-grid > .curator::before {
-  display: none;
-}
-
-/* Bleed past `.section-inner` horizontal padding so the panel lines up with the main column guides. */
-#full-catalog-grid > .curator {
-  align-self: stretch;
-  box-sizing: border-box;
-  width: calc(100% + 2 * var(--layout-margin));
-  max-width: none;
-  margin-left: calc(-1 * var(--layout-margin));
-  margin-right: calc(-1 * var(--layout-margin));
-}
-
-/* Full width of `.catalog-stack` like card grids; no nested column guides (main column guides live on outer `.layout-guides`). */
-#full-catalog-grid > .curator .curator-shell.layout-guides {
-  width: 100%;
-  max-width: none;
-  margin-left: 0;
-  margin-right: 0;
-}
-
-#full-catalog-grid > .curator .curator-shell.layout-guides::after {
-  display: none;
-}
-
-#full-catalog-grid > .curator .curator-inner {
-  box-sizing: border-box;
-  width: 100%;
-  max-width: none;
-  margin-top: 64px;
-  margin-bottom: 64px;
-  margin-left: 0;
-  margin-right: 0;
-  background: var(--color-surface);
-  border-top: 1px solid var(--color-border-quiet);
-  border-bottom: 1px solid var(--color-border-quiet);
-}
-
-/* Left/right column guides (same treatment as `.layout-guides::after`). */
-#full-catalog-grid > .curator .curator-inner::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 4;
-  pointer-events: none;
-  border-left: 1px solid var(--color-border-quiet);
-  border-right: 1px solid var(--color-border-quiet);
-}
-
-/* Let copy flex within the full-bleed row (base `.curator-copy` uses a fixed 734px width). */
-#full-catalog-grid > .curator .curator-copy {
-  flex: 1 1 auto;
-  width: auto;
-  min-width: 0;
-  max-width: min(734px, 100%);
-}
-
-#full-catalog-grid > .curator .curator-wave::after {
-  background: linear-gradient(
-    90deg,
-    #ffffff 18%,
-    rgba(255, 255, 255, 0) 72%
-  );
-}
-
-/* Stack main above the extended hero mesh (see homepage.css .page-top-art z-index). */
+/* All-products LP: catalog above hero mesh; when Products mega is active, flip stacking so mega reads on top. */
 .page > .page-top-art {
+  position: relative;
   z-index: 1;
 }
 
@@ -942,8 +793,6 @@ main {
   z-index: 12;
 }
 
-/* All-products LP only (.page): while Products mega/scrim are active, keep #main-content
-   below .page-top-art so stacking is page < scrim < mega (homepage.css z-index 355 / 401). */
 .page:has(.home-products-nav:hover) > .page-top-art,
 .page:has(.home-mega:hover) > .page-top-art,
 .page:has(.home-products-nav:focus-within) > .page-top-art,
@@ -958,9 +807,8 @@ main {
   z-index: 1;
 }
 
-.catalog-full-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  align-items: start;
+main {
+  padding-bottom: 80px;
 }
 
 .section-block {
@@ -1086,12 +934,14 @@ main {
 }
 
 /* Manage money: separate media strip from body with same stroke as card edge */
-#main-content .card-placeholder[data-product-areas="money-management"] .card-placeholder__media {
+section[aria-labelledby="lockup-money"] .card-placeholder__media {
   border-bottom: 1px solid var(--color-border-quiet);
 }
 
 /* Revenue — Stripe Sigma card: media slot spec 400×180 (caps to card width on narrow columns) */
-.card-placeholder--sigma-slot .card-placeholder__media {
+section[aria-labelledby="lockup-revenue"]
+  .card-placeholder:nth-child(5)
+  .card-placeholder__media {
   box-sizing: border-box;
   flex: 0 0 180px;
   width: min(400px, 100%);
@@ -1191,132 +1041,6 @@ main {
   align-items: center;
 }
 
-/* Full catalog + filtered results — Figma 8021:117393 product cards (text-first) */
-#full-catalog-grid .card-placeholder__area-tag {
-  display: inline-flex;
-  align-items: center;
-}
-
-#full-catalog-grid .card-placeholder__body,
-.filtered-catalog-grid .card-placeholder__body {
-  gap: 0;
-  padding: 24px;
-}
-
-#full-catalog-grid .card-placeholder__text-stack,
-.filtered-catalog-grid .card-placeholder__text-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-#full-catalog-grid .card-placeholder__intro,
-.filtered-catalog-grid .card-placeholder__intro {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-#full-catalog-grid .card-placeholder__label,
-.filtered-catalog-grid .card-placeholder__label {
-  color: #533afd;
-  font-weight: 500;
-  transition: color 0.15s ease;
-}
-
-#full-catalog-grid .card-placeholder:hover .card-placeholder__label,
-.filtered-catalog-grid .card-placeholder:hover .card-placeholder__label {
-  color: #2e2b8c;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  #full-catalog-grid .card-placeholder__label,
-  .filtered-catalog-grid .card-placeholder__label {
-    transition: none;
-  }
-}
-
-/* Chevron tracks title: default #533afd, hover #2e2b8c */
-#full-catalog-grid .card-placeholder__label::after,
-.filtered-catalog-grid .card-placeholder__label::after {
-  background-color: #533afd;
-  background-image: none;
-  -webkit-mask-image: url("assets/card-placeholder-arrow-next-mask.svg");
-  mask-image: url("assets/card-placeholder-arrow-next-mask.svg");
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-  -webkit-mask-size: 16px 16px;
-  mask-size: 16px 16px;
-  transition:
-    opacity 0.15s ease,
-    width 0.15s ease,
-    margin-left 0.15s ease,
-    background-color 0.15s ease;
-}
-
-#full-catalog-grid .card-placeholder:hover .card-placeholder__label::after,
-.filtered-catalog-grid .card-placeholder:hover .card-placeholder__label::after {
-  background-color: #2e2b8c;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  #full-catalog-grid .card-placeholder__label::after,
-  .filtered-catalog-grid .card-placeholder__label::after {
-    transition: none;
-  }
-}
-
-#full-catalog-grid .card-placeholder__lead,
-.filtered-catalog-grid .card-placeholder__lead {
-  margin: 0;
-  font-family: var(--font-sans);
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 22.5px;
-  /* Figma 0% letter spacing */
-  letter-spacing: 0;
-  color: #50617a;
-}
-
-#full-catalog-grid .card-placeholder__features,
-.filtered-catalog-grid .card-placeholder__features {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-#full-catalog-grid .card-placeholder__feature,
-.filtered-catalog-grid .card-placeholder__feature {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  margin: 0;
-  font-family: var(--font-sans);
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 22.5px;
-  letter-spacing: 0;
-  color: #50617a;
-}
-
-#full-catalog-grid .card-placeholder__feature-icon,
-.filtered-catalog-grid .card-placeholder__feature-icon {
-  flex-shrink: 0;
-  width: 16px;
-  height: 16px;
-  margin-top: 3px;
-}
-
-#full-catalog-grid .card-placeholder__feature-icon svg,
-.filtered-catalog-grid .card-placeholder__feature-icon svg {
-  display: block;
-}
-
 .card-placeholder__lines {
   display: flex;
   flex-direction: column;
@@ -1343,12 +1067,7 @@ main {
 }
 
 /* ----- Filtered results: cards moved into .filtered-catalog-grid (see JS) ----- */
-#main-content.main--filtered #full-catalog-grid {
-  display: none;
-}
-
-/* Hide the empty full-catalog wrapper so its padding doesn’t stack under the filtered grid. */
-#main-content.main--filtered .catalog-section {
+#main-content.main--filtered > section.section-block {
   display: none;
 }
 
@@ -1363,7 +1082,7 @@ main {
   align-items: start;
   padding-left: var(--layout-margin);
   padding-right: var(--layout-margin);
-  padding-top: 0;
+  padding-top: 48px;
   box-sizing: border-box;
 }
 
@@ -1375,6 +1094,10 @@ main {
 #main-content.main--filtered .filtered-catalog-grid .card-placeholder__body {
   gap: 0;
   padding-bottom: 24px;
+}
+
+#main-content.main--filtered .filtered-catalog-grid .card-placeholder__label {
+  margin-bottom: 8px;
 }
 
 /* Curator shell: wraps inner so `.layout-guides` borders aren’t overridden by `.curator-inner` width rules */
@@ -1825,10 +1548,6 @@ main {
     grid-template-columns: 1fr;
   }
 
-  .catalog-full-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .filtered-catalog-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1897,10 +1616,6 @@ main {
     grid-template-columns: 1fr;
   }
 
-  .catalog-full-grid {
-    grid-template-columns: 1fr;
-  }
-
   .filtered-catalog-grid {
     grid-template-columns: 1fr;
   }
@@ -1912,22 +1627,6 @@ main {
   .filter-select-wrap {
     flex: 1 1 auto;
     width: 100%;
-  }
-
-  .page-top-art .search-field-wrap {
-    flex: 1 1 auto;
-    width: 100%;
-    max-width: none;
-  }
-
-  .page-top-art .filter-select-wrap {
-    flex: 1 1 auto;
-    width: 100%;
-    max-width: none;
-  }
-
-  .page-top-art .filters-bar__controls {
-    max-width: none;
   }
 
   .curator-inner {
