@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>All products · Stripe</title>
+    <title>Stripe · Home</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,25 +13,20 @@
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="homepage.css" />
   </head>
-  <body>
-    <div class="page">
-      <div class="page-top-art">
-      <div class="page-top-art__mesh-clip" aria-hidden="true">
-        <img
-          class="page-top-art__mesh"
-          src="assets/hero-mesh-wave.png"
-          alt=""
-          width="1024"
-          height="497"
-          decoding="async"
-          aria-hidden="true"
-        />
+  <body class="home-page home-page-body">
+    <div class="page-frame">
+      <div class="home-hero-stage">
+      <div class="home-hero__art" aria-hidden="true">
+        <div class="home-hero__mesh"></div>
+        <div class="home-hero__wave">
+          <div data-js-target="nouveau-bloom-wave" class="home-hero__wave-inner"></div>
+        </div>
       </div>
       <header class="home-header site-header">
       <div class="home-header-container">
         <div class="header-inner">
           <div class="header-left">
-            <a class="logo" href="homepage.html" aria-label="Stripe home">
+            <a class="logo" href="index.html" aria-label="Stripe home">
               <img
                 src="https://www.figma.com/api/mcp/asset/f87d861f-a177-479a-8676-db5011277c55"
                 alt="Stripe"
@@ -228,7 +223,7 @@
               <p class="home-mega__footer-note">
                 Get personalized Stripe product recommendations based on your business details.
               </p>
-              <a class="home-mega__footer-cta" href="./index.html">
+              <a class="home-mega__footer-cta" href="./all-products.html">
                 Find what&apos;s right for you
                 <img
                   class="home-mega__footer-cta-icon"
@@ -264,7 +259,7 @@
                   <p class="home-mega__item-desc">Linked financial account data</p>
                 </a>
               </div>
-              <a class="home-mega__more-link" href="./index.html">
+              <a class="home-mega__more-link" href="./all-products.html">
                 See all products
                 <img
                   class="home-mega__more-link-icon"
@@ -315,929 +310,317 @@
 
       <div class="home-mega-backdrop" aria-hidden="true"></div>
 
-      <div class="layout-guides">
-      <div class="breadcrumb-bar">
-        <div class="breadcrumb-inner">
-          <p class="breadcrumb-title">All products</p>
-        </div>
-      </div>
-
-      <section class="hero" aria-labelledby="hero-heading">
-        <div class="hero-inner">
-          <h1 id="hero-heading" class="hero-title">
-            <span class="line-dark">The full toolkit, on one platform.</span><span class="line-muted"
-              >Accept payments, move money, manage revenue, and more with Stripe.</span
-            >
+      <section class="home-hero" aria-labelledby="home-hero-heading">
+        <div class="layout-guides home-hero__guides">
+        <div class="home-hero__inner">
+          <p class="home-hero__gdp">
+            <span class="home-hero__gdp-strong">Global GDP running on Stripe:</span>
+            <span class="home-hero__gdp-sep" aria-hidden="true"> </span>
+            <span class="home-hero__gdp-num">1.62549111%</span>
+          </p>
+          <h1 class="home-hero__title home-hero__title--blend" id="home-hero-heading">
+            <span class="home-hero__title-line home-hero__title-line--dark">
+              Financial infrastructure to grow your revenue.
+            </span>
+            <span class="home-hero__title-line home-hero__title-line--muted">
+              Accept payments, offer financial services, and implement custom revenue models—from your
+              first transaction to your billionth.
+            </span>
           </h1>
-        </div>
-      </section>
-      </div>
-      </div>
-
-      <div class="layout-guides">
-      <div class="filters-ribbon">
-      <div class="filters-wrap">
-        <div class="filters-bar">
-          <div class="filters-bar__controls">
-          <div class="search-field-wrap">
-            <label class="search-field">
-              <span class="visually-hidden">Search</span>
-              <input
-                type="search"
-                name="q"
-                placeholder="Search for a product"
-                autocomplete="off"
-                aria-expanded="false"
-                aria-controls="search-popover"
-                aria-autocomplete="list"
-                id="search-input"
-              />
-              <button type="button" class="search-submit" aria-label="Search" id="search-submit-btn">
-                <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
-                  <circle
-                    cx="6"
-                    cy="6"
-                    r="4.5"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                  />
-                  <path
-                    d="M9 9 L12.5 12.5"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                  />
-                </svg>
-              </button>
-            </label>
-            <div
-              class="search-popover"
-              id="search-popover"
-              role="region"
-              aria-label="Search suggestions"
-              hidden
-            >
-              <div class="search-popover__body">
-                <ul
-                  id="search-suggestions-list"
-                  class="search-popover__list"
-                  role="listbox"
-                  aria-label="Matches from this page"
-                ></ul>
-                <p id="search-suggestions-empty" class="search-popover__empty" hidden>
-                  No matching content on this page.
-                </p>
-                <p id="search-suggestions-prompt" class="search-popover__prompt" hidden>
-                  Start typing to search this page.
-                </p>
-              </div>
-              <div class="search-popover__footer">
-                <p class="search-popover__hint">Not sure where to start?</p>
-                <a class="search-popover__cta" href="#footer-personalization">
-                  Find what’s right for you
-                  <svg width="6" height="10" viewBox="0 0 5.5 8.49902" aria-hidden="true">
-                    <path fill="currentColor" d="M4.84766 3.63379L5.45898 4.25L4.84766 4.86621L1.24219 8.49902L0 7.2666L2.99316 4.24902L0 1.23242L1.24219 0L4.84766 3.63379Z" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="filter-select-wrap filter-multiselect" data-filter-placeholder="Product areas">
-            <button
-              type="button"
-              id="filter-product-areas"
-              class="select-like filter-multiselect__trigger"
-              aria-expanded="false"
-              aria-controls="filter-product-areas-panel"
-              aria-haspopup="dialog"
-              aria-label="Product areas"
-            >
-              <span class="filter-multiselect__value">Product areas</span>
-            </button>
-            <div
-              class="filter-multiselect__panel"
-              id="filter-product-areas-panel"
-              role="group"
-              aria-label="Product areas"
-              hidden
-            >
-              <label class="filter-multiselect__option">
-                <input type="checkbox" name="product_areas" value="payments" />
-                <span>Payments</span>
-              </label>
-              <label class="filter-multiselect__option">
-                <input type="checkbox" name="product_areas" value="risk" />
-                <span>Risk</span>
-              </label>
-              <label class="filter-multiselect__option">
-                <input type="checkbox" name="product_areas" value="revenue" />
-                <span>Revenue</span>
-              </label>
-              <label class="filter-multiselect__option">
-                <input type="checkbox" name="product_areas" value="money-management" />
-                <span>Money Management</span>
-              </label>
-              <label class="filter-multiselect__option">
-                <input type="checkbox" name="product_areas" value="embedded-finance" />
-                <span>Embedded Finance</span>
-              </label>
-              <label class="filter-multiselect__option">
-                <input type="checkbox" name="product_areas" value="crypto" />
-                <span>Crypto</span>
-              </label>
-              <label class="filter-multiselect__option">
-                <input type="checkbox" name="product_areas" value="other" />
-                <span>Other</span>
-              </label>
-            </div>
-          </div>
-          <div
-            class="filter-select-wrap filter-select-wrap--solid filter-multiselect"
-            data-filter-placeholder="Use cases"
-          >
-            <button
-              type="button"
-              id="filter-use-cases"
-              class="select-like select-like--solid filter-multiselect__trigger"
-              aria-expanded="false"
-              aria-controls="filter-use-cases-panel"
-              aria-haspopup="dialog"
-              aria-label="Use cases"
-            >
-              <span class="filter-multiselect__value">Use cases</span>
-            </button>
-            <div
-              class="filter-multiselect__panel"
-              id="filter-use-cases-panel"
-              role="group"
-              aria-label="Use cases"
-              hidden
-            >
-              <label class="filter-multiselect__option">
-                <input type="checkbox" name="use_cases" value="boost-conversion" />
-                <span>Boost conversion</span>
-              </label>
-              <label class="filter-multiselect__option">
-                <input type="checkbox" name="use_cases" value="mitigate-fraud" />
-                <span>Mitigate fraud</span>
-              </label>
-              <label class="filter-multiselect__option">
-                <input type="checkbox" name="use_cases" value="reduce-costs" />
-                <span>Reduce costs</span>
-              </label>
-              <label class="filter-multiselect__option">
-                <input type="checkbox" name="use_cases" value="scale-globally" />
-                <span>Scale globally</span>
-              </label>
-              <label class="filter-multiselect__option">
-                <input type="checkbox" name="use_cases" value="optimize-subscriptions" />
-                <span>Optimize subscriptions</span>
-              </label>
-              <label class="filter-multiselect__option">
-                <input type="checkbox" name="use_cases" value="manage-finances" />
-                <span>Manage finances</span>
-              </label>
-              <label class="filter-multiselect__option">
-                <input type="checkbox" name="use_cases" value="send-money" />
-                <span>Send money</span>
-              </label>
-            </div>
-          </div>
-          </div>
-          <div
-            id="filters-active-callout"
-            class="filters-active-callout"
-            role="status"
-            aria-live="polite"
-            hidden
-          >
-            <p class="filters-active-callout__copy">
-              <span id="filters-active-summary"></span>
-            </p>
-            <button
-              type="button"
-              class="filters-active-callout__clear"
-              id="filters-clear-all"
-              aria-label="Clear product area and use case filters"
-            >
-              Clear filters
-              <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
-                <circle cx="6" cy="6" r="5.5" fill="var(--color-action)" />
+          <div class="home-hero__actions">
+            <a class="home-btn-primary-lg" href="#">
+              Get started
+              <svg width="6" height="9" viewBox="0 0 6 9" aria-hidden="true">
                 <path
-                  d="M3.5 3.5l5 5M8.5 3.5l-5 5"
-                  stroke="#fff"
-                  stroke-width="1.2"
+                  d="M1 1L4.5 4.5L1 8"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
                   stroke-linecap="round"
+                  stroke-linejoin="round"
                 />
               </svg>
-            </button>
+            </a>
+            <a class="home-btn-secondary-lg" href="#">
+              <svg
+                class="home-btn-google-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                width="12"
+                height="12"
+                viewBox="0 0 18 18"
+                aria-hidden="true"
+              >
+                <path
+                  fill="#4285F4"
+                  d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z"
+                />
+                <path
+                  fill="#34A853"
+                  d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z"
+                />
+                <path
+                  fill="#FBBC05"
+                  d="M3.964 10.707c-.18-.54-.282-1.117-.282-1.707s.102-1.167.282-1.707V4.961H.957C.348 6.175 0 7.55 0 9s.348 2.825.957 4.039l3.007-2.332z"
+                />
+                <path
+                  fill="#EA4335"
+                  d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.961L3.964 7.293C4.672 5.163 6.656 3.58 9 3.58z"
+                />
+              </svg>
+              Sign up with Google
+            </a>
           </div>
         </div>
-      </div>
-      </div>
+        </div>
+      </section>
+    </div>
 
-      <main id="main-content">
-        <section
-          class="section-block section-block--surface"
-          aria-labelledby="lockup-payments"
-        >
-          <div class="section-inner">
-            <div class="lockup">
-              <h2 id="lockup-payments" class="lockup-heading">
-                Get paid. Accept and optimize payments, however customers pay.
-              </h2>
-              <p class="lockup-body">
-                From online checkout to in-store terminals, accept 125+ payment methods and 135+
-                currencies with a single, unified integration.
-              </p>
-            </div>
-            <div class="card-grid" aria-hidden="true">
-              <article class="card-placeholder">
-                <div class="card-placeholder__media" aria-hidden="true">
-                  <img
-                    src="assets/product-agentic-commerce.png"
-                    alt=""
-                    width="1024"
-                    height="460"
-                    decoding="async"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-placeholder__body">
-                  <p class="card-placeholder__label">Agentic Commerce</p>
-                  <p class="card-placeholder__desc">
-                    Publish products on AI surfaces with control over details and pricing, powered by the
-                    Agentic Commerce Protocol.
-                  </p>
-                </div>
-              </article>
-              <article class="card-placeholder">
-                <div class="card-placeholder__media" aria-hidden="true">
-                  <img
-                    src="assets/product-auth-boost.png"
-                    alt=""
-                    width="1024"
-                    height="460"
-                    decoding="async"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-placeholder__body">
-                  <p class="card-placeholder__label">Authorization Boost</p>
-                  <p class="card-placeholder__desc">
-                    Increase acceptance, lower costs, and reduce churn with 2.2% average revenue lift and 20%
-                    false declines recovered.
-                  </p>
-                </div>
-              </article>
-              <article class="card-placeholder">
-                <div class="card-placeholder__media" aria-hidden="true">
-                  <img
-                    src="assets/product-checkout.png"
-                    alt=""
-                    width="1024"
-                    height="460"
-                    decoding="async"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-placeholder__body">
-                  <p class="card-placeholder__label">Checkout</p>
-                  <p class="card-placeholder__desc">
-                    Increase sales with a prebuilt payment form supporting 30+ languages, 135+ currencies,
-                    and full customization.
-                  </p>
-                </div>
-              </article>
-              <article class="card-placeholder">
-                <div class="card-placeholder__media" aria-hidden="true">
-                  <img
-                    src="assets/product-link.png"
-                    alt=""
-                    width="1024"
-                    height="460"
-                    decoding="async"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-placeholder__body">
-                  <p class="card-placeholder__label">Link</p>
-                  <p class="card-placeholder__desc">
-                    Boost conversion with secure checkout, autofill for saved info, and 200M+ buyers using
-                    Link worldwide.
-                  </p>
-                </div>
-              </article>
-              <article class="card-placeholder">
-                <div class="card-placeholder__media" aria-hidden="true">
-                  <img
-                    src="assets/product-managed-payments.jpg"
-                    alt=""
-                    width="1024"
-                    height="460"
-                    decoding="async"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-placeholder__body">
-                  <p class="card-placeholder__label">Managed Payments</p>
-                  <p class="card-placeholder__desc">
-                    Simplify global selling with Stripe as merchant of record, with tax compliance in 80+
-                    countries.
-                  </p>
-                </div>
-              </article>
-              <article class="card-placeholder">
-                <div class="card-placeholder__media" aria-hidden="true">
-                  <img
-                    src="assets/product-elements.png"
-                    alt=""
-                    width="1024"
-                    height="460"
-                    decoding="async"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-placeholder__body">
-                  <p class="card-placeholder__label">Elements</p>
-                  <p class="card-placeholder__desc">
-                    Design a secure payments experience with 40+ methods and 11.9% average revenue increase.
-                  </p>
-                </div>
-              </article>
-              <article class="card-placeholder">
-                <div class="card-placeholder__media" aria-hidden="true">
-                  <img
-                    src="assets/product-payment-processing.png"
-                    alt=""
-                    width="1024"
-                    height="460"
-                    decoding="async"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-placeholder__body">
-                  <p class="card-placeholder__label">Payment Processing</p>
-                  <p class="card-placeholder__desc">
-                    Accept payments online, in person, and globally with 100+ methods and Adaptive Pricing.
-                  </p>
-                </div>
-              </article>
-              <article class="card-placeholder">
-                <div class="card-placeholder__media" aria-hidden="true">
-                  <img
-                    src="assets/product-terminal.png"
-                    alt=""
-                    width="1024"
-                    height="460"
-                    decoding="async"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-placeholder__body">
-                  <p class="card-placeholder__label">Terminal</p>
-                  <p class="card-placeholder__desc">
-                    Unify online and in-person payments with POS integrations and pre-certified Stripe or
-                    select 3P readers.
-                  </p>
-                </div>
-              </article>
-              <article class="card-placeholder">
-                <div class="card-placeholder__media" aria-hidden="true">
-                  <img
-                    src="assets/product-payment-links.png"
-                    alt=""
-                    width="1024"
-                    height="460"
-                    decoding="async"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-placeholder__body">
-                  <p class="card-placeholder__label">Payment Links</p>
-                  <p class="card-placeholder__desc">
-                    Accept payments in minutes with no-code links, brand customization, and automatic
-                    post-payment invoices.
-                  </p>
-                </div>
-              </article>
-            </div>
+    <main class="home-page">
+      <section class="home-logo-wall" aria-labelledby="home-logo-wall-heading">
+        <div class="layout-guides home-logo-wall__guides">
+        <h2 id="home-logo-wall-heading" class="visually-hidden">
+          Companies building on Stripe
+        </h2>
+        <div class="home-logo-wall__rail" aria-hidden="true"></div>
+        <div class="home-logo-wall__viewport">
+          <div class="home-logo-wall__static">
+            <img
+              class="home-logo-wall__static-img"
+              src="assets/home/logo-wall-global-static.jpg"
+              alt=""
+              width="1024"
+              height="48"
+              decoding="async"
+              loading="lazy"
+            />
           </div>
-        </section>
+        </div>
+        <div class="home-logo-wall__rail" aria-hidden="true"></div>
+        </div>
+      </section>
 
-        <section class="curator" aria-labelledby="curator-heading">
-          <div class="layout-guides curator-shell">
-            <div class="curator-inner">
-              <p id="curator-heading" class="curator-copy">
-                <span class="seg-a">Personalize your Stripe experience. </span>
-                <span class="seg-b"
-                  >Get product recommendations, case studies, helpful guides, and more.</span
-                >
-              </p>
-              <div class="curator-wave" aria-hidden="true">
-                <div class="curator-wave__img-wrap">
-                  <img
-                    class="curator-wave__img"
-                    src="assets/curator-gradient.png"
-                    alt=""
-                    width="1024"
-                    height="296"
-                  />
-                </div>
-              </div>
-              <a class="btn btn--primary curator-cta" href="#">
-                Find what’s right for you
-                <svg width="6" height="10" viewBox="0 0 5.5 8.49902" aria-hidden="true">
-                  <path fill="currentColor" d="M4.84766 3.63379L5.45898 4.25L4.84766 4.86621L1.24219 8.49902L0 7.2666L2.99316 4.24902L0 1.23242L1.24219 0L4.84766 3.63379Z" />
-                </svg>
+      <section class="home-bento" data-lower-bg aria-labelledby="home-bento-heading">
+        <div class="layout-guides home-bento__guides">
+          <div class="home-bento__intro">
+            <h2 id="home-bento-heading" class="home-bento__heading">
+              Flexible solutions for every business model. <span class="home-bento__heading-sub">
+                Grow your business with a comprehensive set of payments and financial tools—designed to
+                work individually or together.
+              </span>
+            </h2>
+          </div>
+          <ul class="home-bento__grid">
+            <li class="home-bento-card home-bento-card--wide" data-container-hover-follow>
+              <a class="home-bento-card__link" href="#">
+                <span class="home-bento-card__surface">
+                  <span class="home-bento-card__frame">
+                    <span class="home-bento-card__glow-layer">
+                      <span class="home-bento-card__follow" data-hover-follow></span>
+                    </span>
+                    <span class="home-bento-card__media">
+                      <span class="home-bento-card__row">
+                        <span class="home-bento-card__title">
+                          Accept and optimize payments globally—online and in person
+                        </span>
+                        <span class="home-bento-card__glyph" aria-hidden="true"></span>
+                      </span>
+                      <span class="home-bento-card__media-inner">
+                        <img
+                          src="assets/home/bento-1.png"
+                          alt=""
+                          width="1024"
+                          height="848"
+                          decoding="async"
+                          class="home-bento-card__img"
+                        />
+                      </span>
+                    </span>
+                  </span>
+                </span>
               </a>
-            </div>
-          </div>
-        </section>
+            </li>
+            <li class="home-bento-card" data-container-hover-follow>
+              <a class="home-bento-card__link" href="#">
+                <span class="home-bento-card__surface">
+                  <span class="home-bento-card__frame">
+                    <span class="home-bento-card__glow-layer">
+                      <span class="home-bento-card__follow" data-hover-follow></span>
+                    </span>
+                    <span class="home-bento-card__media home-bento-card__media--b">
+                      <span class="home-bento-card__row">
+                        <span class="home-bento-card__title">Enable any billing model</span>
+                        <span class="home-bento-card__glyph" aria-hidden="true"></span>
+                      </span>
+                      <span class="home-bento-card__media-inner">
+                        <img
+                          src="assets/home/bento-2.png"
+                          alt=""
+                          width="605"
+                          height="1024"
+                          decoding="async"
+                          class="home-bento-card__img"
+                        />
+                      </span>
+                    </span>
+                  </span>
+                </span>
+              </a>
+            </li>
+            <li class="home-bento-card" data-container-hover-follow>
+              <a class="home-bento-card__link" href="#">
+                <span class="home-bento-card__surface">
+                  <span class="home-bento-card__frame">
+                    <span class="home-bento-card__glow-layer">
+                      <span class="home-bento-card__follow" data-hover-follow></span>
+                    </span>
+                    <span class="home-bento-card__media home-bento-card__media--c">
+                      <span class="home-bento-card__row">
+                        <span class="home-bento-card__title">Monetize through agentic commerce</span>
+                        <span class="home-bento-card__glyph" aria-hidden="true"></span>
+                      </span>
+                      <span class="home-bento-card__media-inner">
+                        <img
+                          src="assets/home/bento-3.png"
+                          alt=""
+                          width="605"
+                          height="1024"
+                          decoding="async"
+                          class="home-bento-card__img"
+                        />
+                      </span>
+                    </span>
+                  </span>
+                </span>
+              </a>
+            </li>
+            <li class="home-bento-card" data-container-hover-follow>
+              <a class="home-bento-card__link" href="#">
+                <span class="home-bento-card__surface">
+                  <span class="home-bento-card__frame">
+                    <span class="home-bento-card__glow-layer">
+                      <span class="home-bento-card__follow" data-hover-follow></span>
+                    </span>
+                    <span class="home-bento-card__media home-bento-card__media--d">
+                      <span class="home-bento-card__row">
+                        <span class="home-bento-card__title">Create a card issuing program</span>
+                        <span class="home-bento-card__glyph" aria-hidden="true"></span>
+                      </span>
+                      <span class="home-bento-card__media-inner">
+                        <img
+                          src="assets/home/bento-4.png"
+                          alt=""
+                          width="605"
+                          height="1024"
+                          decoding="async"
+                          class="home-bento-card__img"
+                        />
+                      </span>
+                    </span>
+                  </span>
+                </span>
+              </a>
+            </li>
+            <li class="home-bento-card" data-container-hover-follow>
+              <a class="home-bento-card__link" href="#">
+                <span class="home-bento-card__surface">
+                  <span class="home-bento-card__frame">
+                    <span class="home-bento-card__glow-layer">
+                      <span class="home-bento-card__follow" data-hover-follow></span>
+                    </span>
+                    <span class="home-bento-card__media home-bento-card__media--e">
+                      <span class="home-bento-card__row">
+                        <span class="home-bento-card__title">
+                          Access borderless money movement with stablecoins and crypto
+                        </span>
+                        <span class="home-bento-card__glyph" aria-hidden="true"></span>
+                      </span>
+                      <span class="home-bento-card__media-inner">
+                        <img
+                          src="assets/home/bento-5.png"
+                          alt=""
+                          width="605"
+                          height="1024"
+                          decoding="async"
+                          class="home-bento-card__img"
+                        />
+                      </span>
+                    </span>
+                  </span>
+                </span>
+              </a>
+            </li>
+            <li class="home-bento-card home-bento-card--full" data-container-hover-follow>
+              <a class="home-bento-card__link" href="#">
+                <span class="home-bento-card__surface">
+                  <span class="home-bento-card__frame">
+                    <span class="home-bento-card__glow-layer">
+                      <span class="home-bento-card__follow" data-hover-follow></span>
+                    </span>
+                    <span class="home-bento-card__media home-bento-card__media--f">
+                      <span class="home-bento-card__row">
+                        <span class="home-bento-card__title home-bento-card__title--narrow">
+                          Embed payments in<br />
+                          your platform
+                        </span>
+                        <span class="home-bento-card__glyph" aria-hidden="true"></span>
+                      </span>
+                      <span class="home-bento-card__media-inner">
+                        <img
+                          src="assets/home/bento-6.jpg"
+                          alt=""
+                          width="1024"
+                          height="374"
+                          decoding="async"
+                          class="home-bento-card__img home-bento-card__img--wide"
+                        />
+                      </span>
+                    </span>
+                  </span>
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
 
-        <section class="section-block section-block--surface" aria-labelledby="lockup-risk">
-          <div class="section-inner">
-            <div class="lockup">
-              <h2 id="lockup-risk" class="lockup-heading">
-                Manage risk. Protect revenue and legitimate transactions.
-              </h2>
-              <p class="lockup-body">
-                Reduce fraud, prevent false positives, and keep legitimate transactions flowing with
-                AI-powered fraud prevention, programmable identity checks, and more.
-              </p>
+      <section class="curator" aria-labelledby="curator-heading">
+        <div class="layout-guides curator-shell">
+          <div class="curator-inner">
+            <p id="curator-heading" class="curator-copy">
+              <span class="seg-a">Personalize your Stripe experience. </span>
+              <span class="seg-b"
+                >Get product recommendations, case studies, helpful guides, and more.</span
+              >
+            </p>
+            <div class="curator-wave" aria-hidden="true">
+              <div class="curator-wave__img-wrap">
+                <img
+                  class="curator-wave__img"
+                  src="assets/curator-gradient.png"
+                  alt=""
+                  width="1024"
+                  height="296"
+                  decoding="async"
+                />
+              </div>
             </div>
-            <div class="card-grid card-grid--six" aria-hidden="true">
-              <article class="card-placeholder">
-                <div class="card-placeholder__media" aria-hidden="true">
-                  <img
-                    src="assets/product-dispute-management.png"
-                    alt=""
-                    width="1024"
-                    height="460"
-                    decoding="async"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-placeholder__body">
-                  <p class="card-placeholder__label">Dispute Management</p>
-                  <p class="card-placeholder__desc">
-                    Mitigate disputes faster with AI-powered tools, Smart Refunds to prevent disputes, and
-                    Smart Disputes to recover revenue.
-                  </p>
-                </div>
-              </article>
-              <article class="card-placeholder">
-                <div class="card-placeholder__media" aria-hidden="true">
-                  <img
-                    src="assets/product-radar.png"
-                    alt=""
-                    width="1024"
-                    height="460"
-                    decoding="async"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-placeholder__body">
-                  <p class="card-placeholder__label">Radar</p>
-                  <p class="card-placeholder__desc">
-                    Identify and prevent fraud in real time with AI, optimized reviews, custom rules, and 38%
-                    average fraud reduction.
-                  </p>
-                </div>
-              </article>
-              <article class="card-placeholder">
-                <div class="card-placeholder__media" aria-hidden="true">
-                  <img
-                    src="assets/product-radar-fraud-teams.png"
-                    alt=""
-                    width="1024"
-                    height="460"
-                    decoding="async"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-placeholder__body">
-                  <p class="card-placeholder__label">Radar for Fraud Teams</p>
-                  <p class="card-placeholder__desc">
-                    Get fraud insights and assess performance with custom rules and Adaptive 3D Secure from a
-                    unified dashboard.
-                  </p>
-                </div>
-              </article>
-              <article class="card-placeholder">
-                <div class="card-placeholder__media" aria-hidden="true">
-                  <img
-                    src="assets/product-identity.jpg"
-                    alt=""
-                    width="1024"
-                    height="460"
-                    decoding="async"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-placeholder__body">
-                  <p class="card-placeholder__label">Identity</p>
-                  <p class="card-placeholder__desc">
-                    Verify identities to prevent fraud with a conversion-optimized flow and the first 50
-                    verifications free.
-                  </p>
-                </div>
-              </article>
-            </div>
+            <a class="btn btn--primary curator-cta" href="#">
+              Find what&apos;s right for you
+              <svg width="6" height="10" viewBox="0 0 5.5 8.49902" aria-hidden="true">
+                <path
+                  fill="currentColor"
+                  d="M4.84766 3.63379L5.45898 4.25L4.84766 4.86621L1.24219 8.49902L0 7.2666L2.99316 4.24902L0 1.23242L1.24219 0L4.84766 3.63379Z"
+                />
+              </svg>
+            </a>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section class="section-block section-block--subdued" aria-labelledby="lockup-revenue">
-          <div class="section-inner">
-            <div class="lockup">
-              <h2 id="lockup-revenue" class="lockup-heading">
-                Automate revenue. Simplify from billing to reconciliation.
-              </h2>
-              <p class="lockup-body">
-                Move fast and free up resources with flexible billing models, including subscription
-                management and one-time invoicing, tax, and automated reconciliation.
-              </p>
-            </div>
-            <div class="card-grid card-grid--six" aria-hidden="true">
-              <article class="card-placeholder">
-                <div class="card-placeholder__media" aria-hidden="true">
-                  <img
-                    src="assets/product-billing.png"
-                    alt=""
-                    width="1024"
-                    height="460"
-                    decoding="async"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-placeholder__body">
-                  <p class="card-placeholder__label">Billing</p>
-                  <p class="card-placeholder__desc">
-                    Manage pricing, reduce churn, and grow revenue with AI-powered Smart Retries and no-code
-                    tools.
-                  </p>
-                </div>
-              </article>
-              <article class="card-placeholder">
-                <div class="card-placeholder__media" aria-hidden="true">
-                  <img
-                    src="assets/product-data-pipeline.png"
-                    alt=""
-                    width="1024"
-                    height="460"
-                    decoding="async"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-placeholder__body">
-                  <p class="card-placeholder__label">Data Pipeline</p>
-                  <p class="card-placeholder__desc">
-                    Sync your Stripe account with your data warehouse or cloud storage—no code, set up in
-                    minutes with Sigma.
-                  </p>
-                </div>
-              </article>
-              <article class="card-placeholder">
-                <div class="card-placeholder__media" aria-hidden="true">
-                  <img
-                    src="assets/product-invoicing.png"
-                    alt=""
-                    width="1024"
-                    height="460"
-                    decoding="async"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-placeholder__body">
-                  <p class="card-placeholder__label">Invoicing</p>
-                  <p class="card-placeholder__desc">
-                    Create, customize, and send invoices in minutes with automated receivables and invoicing
-                    workflows.
-                  </p>
-                </div>
-              </article>
-              <article class="card-placeholder">
-                <div class="card-placeholder__media" aria-hidden="true">
-                  <img
-                    src="assets/product-revenue-recognition.png"
-                    alt=""
-                    width="1024"
-                    height="460"
-                    decoding="async"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-placeholder__body">
-                  <p class="card-placeholder__label">Revenue Recognition</p>
-                  <p class="card-placeholder__desc">
-                    Close books fast with automated reports and dashboards, integrated with systems and
-                    aligned to IFRS 15 and ASC 606.
-                  </p>
-                </div>
-              </article>
-              <article class="card-placeholder">
-                <div class="card-placeholder__media" aria-hidden="true">
-                  <img
-                    src="assets/product-stripe-sigma.png"
-                    alt=""
-                    width="1024"
-                    height="460"
-                    decoding="async"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-placeholder__body">
-                  <p class="card-placeholder__label">Stripe Sigma</p>
-                  <p class="card-placeholder__desc">
-                    Get insights using SQL or AI prompts with customizable reporting and scheduled reports to
-                    keep teams in sync.
-                  </p>
-                </div>
-              </article>
-              <article class="card-placeholder">
-                <div class="card-placeholder__media" aria-hidden="true">
-                  <img
-                    src="assets/product-subscriptions.png"
-                    alt=""
-                    width="1024"
-                    height="460"
-                    decoding="async"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-placeholder__body">
-                  <p class="card-placeholder__label">Subscriptions</p>
-                  <p class="card-placeholder__desc">
-                    Build and manage subscriptions with prebuilt pricing, coupons, trials, prorations, and
-                    no-code launches.
-                  </p>
-                </div>
-              </article>
-              <article class="card-placeholder">
-                <div class="card-placeholder__media" aria-hidden="true">
-                  <img
-                    src="assets/product-tax.png"
-                    alt=""
-                    width="1024"
-                    height="460"
-                    decoding="async"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-placeholder__body">
-                  <p class="card-placeholder__label">Tax</p>
-                  <p class="card-placeholder__desc">
-                    Automate sales tax, VAT, and GST with no- and low-code setups, calculations, and support
-                    in 100+ countries.
-                  </p>
-                </div>
-              </article>
-              <article class="card-placeholder">
-                <div class="card-placeholder__media" aria-hidden="true">
-                  <img
-                    src="assets/product-usage-based-billing.png"
-                    alt=""
-                    width="1024"
-                    height="460"
-                    decoding="async"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-placeholder__body">
-                  <p class="card-placeholder__label">Usage-Based Billing</p>
-                  <p class="card-placeholder__desc">
-                    Unify metering, billing, and revenue tracking with real-time data, fraud detection, and
-                    transparency.
-                  </p>
-                </div>
-              </article>
-            </div>
-          </div>
-        </section>
+      <div class="home-dark-band" aria-hidden="true"></div>
+    </main>
 
-        <section class="section-block section-block--surface" aria-labelledby="lockup-money">
-          <div class="section-inner">
-            <div class="lockup">
-              <h2 id="lockup-money" class="lockup-heading">
-                Manage money. Move, hold, and track funds with confidence.
-              </h2>
-              <p class="lockup-body">
-                Get full control over how your money is stored and moved with embedded business
-                finances, global payouts, and capital management tools.
-              </p>
-            </div>
-            <div class="card-grid card-grid--six" aria-hidden="true">
-              <article class="card-placeholder">
-                <div class="card-placeholder__media" aria-hidden="true">
-                  <img
-                    src="assets/product-atlas.png"
-                    alt=""
-                    width="1024"
-                    height="460"
-                    decoding="async"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-placeholder__body">
-                  <p class="card-placeholder__label">Atlas</p>
-                  <p class="card-placeholder__desc">
-                    Incorporate your startup and open a bank account in minutes with expert-trusted documents
-                    and $50K+ in perks.
-                  </p>
-                </div>
-              </article>
-              <article class="card-placeholder">
-                <div class="card-placeholder__media" aria-hidden="true">
-                  <img
-                    src="assets/product-capital.jpg"
-                    alt=""
-                    width="1024"
-                    height="460"
-                    decoding="async"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-placeholder__body">
-                  <p class="card-placeholder__label">Capital</p>
-                  <p class="card-placeholder__desc">
-                    Access fast, flexible financing to invest in your business’s growth with one flat fee and
-                    automated payments.
-                  </p>
-                </div>
-              </article>
-              <article class="card-placeholder">
-                <div class="card-placeholder__media" aria-hidden="true">
-                  <img
-                    src="assets/product-financial-connections.jpg"
-                    alt=""
-                    width="1024"
-                    height="460"
-                    decoding="async"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-placeholder__body">
-                  <p class="card-placeholder__label">Financial Connections</p>
-                  <p class="card-placeholder__desc">
-                    Let users securely share financial data with one integration and instant verification
-                    across 5,000 banks.
-                  </p>
-                </div>
-              </article>
-              <article class="card-placeholder">
-                <div class="card-placeholder__media" aria-hidden="true">
-                  <img
-                    src="assets/product-payouts.png"
-                    alt=""
-                    width="1024"
-                    height="460"
-                    decoding="async"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-placeholder__body">
-                  <p class="card-placeholder__label">Global Payouts</p>
-                  <p class="card-placeholder__desc">
-                    Pay customers, affiliates, or third parties in local currency with no-code solutions and
-                    payout reporting.
-                  </p>
-                </div>
-              </article>
-              <article class="card-placeholder">
-                <div class="card-placeholder__media" aria-hidden="true">
-                  <img
-                    src="assets/product-capital-for-platforms.png"
-                    alt=""
-                    width="1024"
-                    height="460"
-                    decoding="async"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-placeholder__body">
-                  <p class="card-placeholder__label">Capital for Platforms</p>
-                  <p class="card-placeholder__desc">
-                    Build and monetize a program offering fast financing with flexible, no-code integrations
-                    aligned to your brand.
-                  </p>
-                </div>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section class="section-block section-block--subdued" aria-labelledby="lockup-embed">
-          <div class="section-inner">
-            <div class="lockup">
-              <h2 id="lockup-embed" class="lockup-heading">
-                Embed finances. Build and monetize payments and financial products.
-              </h2>
-              <p class="lockup-body">
-                Onboard users and offer them payments, financing, card issuing, financial accounts,
-                and more.
-              </p>
-            </div>
-            <div class="card-grid card-grid--wide" aria-hidden="true">
-              <article class="card-placeholder card-placeholder--wide">
-                <div class="card-placeholder__media" aria-hidden="true">
-                  <img
-                    src="assets/product-connect.png"
-                    alt=""
-                    width="1024"
-                    height="303"
-                    decoding="async"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-placeholder__body">
-                  <p class="card-placeholder__label">Connect</p>
-                  <p class="card-placeholder__desc">
-                    Embed payments into your platform or marketplace with prebuilt components and tooling for
-                    onboarding, risk, tax, and more.
-                  </p>
-                </div>
-              </article>
-              <article class="card-placeholder card-placeholder--wide">
-                <div class="card-placeholder__media" aria-hidden="true">
-                  <img
-                    src="assets/product-issuing.png"
-                    alt=""
-                    width="1024"
-                    height="303"
-                    decoding="async"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-placeholder__body">
-                  <p class="card-placeholder__label">Issuing</p>
-                  <p class="card-placeholder__desc">
-                    Instantly issue cards using Stripe’s bank partners with spending limits, custom rules, and
-                    program-managed options.
-                  </p>
-                </div>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section class="section-block section-block--surface" aria-labelledby="lockup-crypto">
-          <div class="section-inner">
-            <div class="lockup">
-              <h2 id="lockup-crypto" class="lockup-heading">
-                Build global financial services with crypto and stablecoins.
-              </h2>
-              <p class="lockup-body">
-                Create programmable wallets, issue stablecoins, launch card programs, and move digital
-                assets globally on a single, crypto-native integration.
-              </p>
-            </div>
-            <div class="card-grid card-grid--wide" aria-hidden="true">
-              <article class="card-placeholder card-placeholder--wide">
-                <div class="card-placeholder__media" aria-hidden="true">
-                  <img
-                    src="assets/product-crypto.png"
-                    alt=""
-                    width="1024"
-                    height="303"
-                    decoding="async"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-placeholder__body">
-                  <p class="card-placeholder__label">Crypto</p>
-                  <p class="card-placeholder__desc">
-                    Integrate stablecoin payments and payouts, manage digital assets, and move money globally
-                    with flexible APIs and localized checkout.
-                  </p>
-                </div>
-              </article>
-              <article class="card-placeholder card-placeholder--wide">
-                <div class="card-placeholder__media" aria-hidden="true">
-                  <img
-                    src="assets/product-crypto-onramp.png"
-                    alt=""
-                    width="1024"
-                    height="303"
-                    decoding="async"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-placeholder__body">
-                  <p class="card-placeholder__label">Crypto Onramp</p>
-                  <p class="card-placeholder__desc">
-                    Let customers buy crypto on your app or site with broad asset and chain support, embedded
-                    into your product.
-                  </p>
-                </div>
-              </article>
-            </div>
-          </div>
-        </section>
-      </main>
-      </div>
-
-      <footer class="site-footer" id="site-footer">
+    <footer class="site-footer" id="site-footer">
         <div class="footer-shell">
           <div class="footer-promo" id="footer-personalization">
             <div class="footer-promo__intro">
@@ -1421,644 +804,13 @@
           </div>
         </div>
       </footer>
-
     </div>
 
-    <script>
-      (function () {
-        var wrap = document.querySelector(".search-field-wrap");
-        var btn = document.getElementById("search-submit-btn");
-        var pop = document.getElementById("search-popover");
-        var input = document.getElementById("search-input");
-        var list = document.getElementById("search-suggestions-list");
-        var empty = document.getElementById("search-suggestions-empty");
-        var prompt = document.getElementById("search-suggestions-prompt");
-        if (!wrap || !btn || !pop || !list) return;
-
-        var index = [];
-
-        var STOP_WORDS = {
-          a: 1,
-          an: 1,
-          and: 1,
-          are: 1,
-          as: 1,
-          at: 1,
-          be: 1,
-          been: 1,
-          being: 1,
-          but: 1,
-          by: 1,
-          can: 1,
-          did: 1,
-          do: 1,
-          does: 1,
-          for: 1,
-          from: 1,
-          had: 1,
-          has: 1,
-          have: 1,
-          how: 1,
-          in: 1,
-          into: 1,
-          is: 1,
-          it: 1,
-          its: 1,
-          may: 1,
-          more: 1,
-          no: 1,
-          not: 1,
-          of: 1,
-          on: 1,
-          or: 1,
-          our: 1,
-          shall: 1,
-          should: 1,
-          so: 1,
-          such: 1,
-          than: 1,
-          that: 1,
-          the: 1,
-          their: 1,
-          these: 1,
-          they: 1,
-          this: 1,
-          those: 1,
-          to: 1,
-          too: 1,
-          up: 1,
-          was: 1,
-          we: 1,
-          were: 1,
-          what: 1,
-          when: 1,
-          where: 1,
-          which: 1,
-          who: 1,
-          will: 1,
-          with: 1,
-          would: 1,
-          you: 1,
-          your: 1,
-        };
-
-        function formatKeyword(word) {
-          if (!word) return "";
-          word = String(word).toLowerCase();
-          if (/^[0-9]+(\.[0-9]+)?$/.test(word)) return word;
-          return word.charAt(0).toUpperCase() + word.slice(1);
-        }
-
-        function addKeyword(word) {
-          if (!word) return;
-          word = String(word).replace(/\s+/g, " ").trim().toLowerCase();
-          if (word.length < 2 || STOP_WORDS[word]) return;
-          var label = formatKeyword(word);
-          for (var i = 0; i < index.length; i++) {
-            if (index[i].label.toLowerCase() === label.toLowerCase()) return;
-          }
-          index.push({ label: label, hay: word });
-        }
-
-        function addKeywordsFromText(text) {
-          if (!text) return;
-          var raw = String(text).toLowerCase();
-          var parts = raw.match(/[a-z0-9]+(?:['’][a-z]+)?|[0-9]+[a-z]*/gi);
-          if (!parts) return;
-          parts.forEach(function (w) {
-            var base = w.replace(/['’]/g, "").toLowerCase();
-            addKeyword(base);
-          });
-        }
-
-        function addPhraseAsKeywords(phrase) {
-          if (!phrase) return;
-          phrase = String(phrase).replace(/\s+/g, " ").trim();
-          if (!phrase) return;
-          if (phrase.length <= 48 && phrase.split(/\s+/).length <= 4) {
-            var words = phrase.match(/[a-z0-9]+(?:['’][a-z]+)?|[0-9]+/gi);
-            if (words && words.length <= 4) {
-              words.forEach(function (w) {
-                addKeyword(w.replace(/['’]/g, "").toLowerCase());
-              });
-              return;
-            }
-          }
-          addKeywordsFromText(phrase);
-        }
-
-        function buildIndex() {
-          index = [];
-          document.querySelectorAll(".lockup-heading").forEach(function (h) {
-            var section = h.closest(".section-block");
-            var body = section && section.querySelector(".lockup-body");
-            addKeywordsFromText(h.textContent);
-            if (body) addKeywordsFromText(body.textContent);
-          });
-          document
-            .querySelectorAll(".hero-title .line-dark, .hero-title .line-muted")
-            .forEach(function (el) {
-              addKeywordsFromText(el.textContent);
-            });
-          document
-            .querySelectorAll("#curator-heading .seg-a, #curator-heading .seg-b")
-            .forEach(function (el) {
-              addKeywordsFromText(el.textContent);
-            });
-          document.querySelectorAll(".breadcrumb-title").forEach(function (el) {
-            addPhraseAsKeywords(el.textContent);
-          });
-          document
-            .querySelectorAll(".filter-multiselect .filter-multiselect__option span")
-            .forEach(function (span) {
-              addPhraseAsKeywords(span.textContent);
-            });
-          document.querySelectorAll(".footer-directory a").forEach(function (a) {
-            addPhraseAsKeywords(a.textContent);
-          });
-          document.querySelectorAll(".footer-promo__heading, .footer-promo__lede").forEach(function (el) {
-            addKeywordsFromText(el.textContent);
-          });
-          document.querySelectorAll(".footer-card__title").forEach(function (el) {
-            addPhraseAsKeywords(el.textContent);
-          });
-        }
-
-        buildIndex();
-
-        function setOpen(open) {
-          if (open) {
-            pop.removeAttribute("hidden");
-            if (input) input.setAttribute("aria-expanded", "true");
-          } else {
-            pop.setAttribute("hidden", "");
-            if (input) input.setAttribute("aria-expanded", "false");
-          }
-        }
-
-        function clearPanel() {
-          while (list.firstChild) list.removeChild(list.firstChild);
-          if (empty) empty.setAttribute("hidden", "");
-          if (prompt) prompt.setAttribute("hidden", "");
-        }
-
-        var MIN_QUERY_CHARS = 2;
-        var MAX_SUGGESTIONS = 2;
-
-        function renderSuggestions(query) {
-          clearPanel();
-          var q = query.trim().toLowerCase();
-          if (!q || q.length < MIN_QUERY_CHARS) {
-            return;
-          }
-          var starts = [];
-          var rest = [];
-          for (var i = 0; i < index.length; i++) {
-            var item = index[i];
-            if (item.hay.indexOf(q) === -1) continue;
-            var lbl = item.label.toLowerCase();
-            if (lbl.indexOf(q) === 0) starts.push(item.label);
-            else rest.push(item.label);
-          }
-          var out = starts.concat(rest);
-          out = out.slice(0, MAX_SUGGESTIONS);
-
-          if (out.length === 0) {
-            if (empty) empty.removeAttribute("hidden");
-            return;
-          }
-
-          out.forEach(function (text) {
-            var li = document.createElement("li");
-            li.setAttribute("role", "presentation");
-            var bt = document.createElement("button");
-            bt.type = "button";
-            bt.className = "search-popover__suggestion";
-            bt.setAttribute("role", "option");
-            bt.textContent = text;
-            bt.addEventListener("click", function () {
-              input.value = text;
-              setOpen(false);
-              input.focus();
-            });
-            li.appendChild(bt);
-            list.appendChild(li);
-          });
-        }
-
-        function panelForTyping() {
-          clearPanel();
-          var q = input.value.trim().toLowerCase();
-          if (!q || q.length < MIN_QUERY_CHARS) {
-            setOpen(false);
-            return;
-          }
-          renderSuggestions(q);
-          setOpen(true);
-        }
-
-        function panelFromButton() {
-          clearPanel();
-          var q = input.value.trim().toLowerCase();
-          if (!q) {
-            if (prompt) prompt.removeAttribute("hidden");
-            setOpen(true);
-            return;
-          }
-          if (q.length < MIN_QUERY_CHARS) {
-            if (prompt) prompt.removeAttribute("hidden");
-            setOpen(true);
-            return;
-          }
-          renderSuggestions(q);
-          setOpen(true);
-        }
-
-        input.addEventListener("input", function () {
-          panelForTyping();
-        });
-
-        input.addEventListener("focus", function () {
-          var q = input.value.trim();
-          if (q.length >= MIN_QUERY_CHARS) {
-            renderSuggestions(q.toLowerCase());
-            setOpen(true);
-          }
-        });
-
-        btn.addEventListener("click", function (e) {
-          e.preventDefault();
-          e.stopPropagation();
-          if (!pop.hasAttribute("hidden")) {
-            setOpen(false);
-            return;
-          }
-          panelFromButton();
-        });
-
-        document.addEventListener("click", function (e) {
-          if (!wrap.contains(e.target)) setOpen(false);
-        });
-
-        document.addEventListener("keydown", function (e) {
-          if (e.key === "Escape") setOpen(false);
-        });
-      })();
-
-      (function () {
-        var wraps = document.querySelectorAll(".filter-multiselect");
-        if (!wraps.length) return;
-
-        var AREA_BY_LOCKUP = {
-          "lockup-payments": "payments",
-          "lockup-risk": "risk",
-          "lockup-revenue": "revenue",
-          "lockup-money": "money-management",
-          "lockup-embed": "embedded-finance",
-          "lockup-crypto": "crypto"
-        };
-
-        var PRODUCT_AREA_LABEL = {
-          payments: "Payments",
-          risk: "Risk",
-          revenue: "Revenue",
-          "money-management": "Money Management",
-          "embedded-finance": "Embedded Finance",
-          crypto: "Crypto",
-          other: "Other"
-        };
-
-        var USE_CASE_POOL = [
-          "boost-conversion",
-          "mitigate-fraud",
-          "reduce-costs",
-          "scale-globally",
-          "optimize-subscriptions",
-          "manage-finances",
-          "send-money"
-        ];
-
-        function tagProductCards() {
-          var cards = document.querySelectorAll(
-            "#main-content section.section-block .card-placeholder"
-          );
-          cards.forEach(function (card, idx) {
-            var section = card.closest("section.section-block");
-            if (!section) return;
-            var lid = section.getAttribute("aria-labelledby");
-            var area = AREA_BY_LOCKUP[lid];
-            if (area) card.setAttribute("data-product-areas", area);
-            var a = USE_CASE_POOL[idx % USE_CASE_POOL.length];
-            var b = USE_CASE_POOL[(idx + 4) % USE_CASE_POOL.length];
-            card.setAttribute("data-use-cases", a + " " + b);
-
-            var desc = card.querySelector(".card-placeholder__desc");
-            if (!desc || !desc.parentNode) return;
-            var lbl = area && PRODUCT_AREA_LABEL[area] ? PRODUCT_AREA_LABEL[area] : "";
-            if (!lbl) return;
-            var tag = card.querySelector(".card-placeholder__area-tag");
-            if (!tag) {
-              tag = document.createElement("p");
-              tag.className = "card-placeholder__area-tag";
-              tag.setAttribute("aria-hidden", "true");
-              desc.parentNode.insertBefore(tag, desc.nextSibling);
-            }
-            tag.textContent = lbl;
-          });
-        }
-
-        tagProductCards();
-
-        function ensureCardAnchors() {
-          if (ensureCardAnchors.done) return;
-          var ord = 0;
-          document.querySelectorAll("#main-content .card-placeholder").forEach(function (card) {
-            card._filterOrder = ord++;
-            card._filterHomeGrid = card.closest(".card-grid");
-          });
-          ensureCardAnchors.done = true;
-        }
-
-        ensureCardAnchors();
-
-        function getOrCreateFilterBucket(mainEl) {
-          var el = mainEl.querySelector(".filtered-catalog-grid");
-          if (!el) {
-            el = document.createElement("div");
-            el.className = "filtered-catalog-grid";
-            el.setAttribute("aria-label", "Filtered products");
-            mainEl.insertBefore(el, mainEl.firstChild);
-          }
-          return el;
-        }
-
-        function clearFilteredLayout(mainEl) {
-          var hadFiltered = mainEl.classList.contains("main--filtered");
-          var bucket = mainEl.querySelector(".filtered-catalog-grid");
-          if (!hadFiltered && !bucket) {
-            mainEl.querySelectorAll(".card-placeholder").forEach(function (c) {
-              c.removeAttribute("hidden");
-            });
-            return;
-          }
-
-          var cards = Array.prototype.slice
-            .call(mainEl.querySelectorAll(".card-placeholder"))
-            .sort(function (a, b) {
-              return a._filterOrder - b._filterOrder;
-            });
-          cards.forEach(function (card) {
-            if (card._filterHomeGrid) {
-              card._filterHomeGrid.appendChild(card);
-            }
-            card.removeAttribute("hidden");
-          });
-          if (bucket) bucket.remove();
-          mainEl.classList.remove("main--filtered");
-        }
-
-        function applyProductFilters() {
-          var mainEl = document.getElementById("main-content");
-          if (!mainEl) return 0;
-
-          ensureCardAnchors();
-
-          var paChecked = document.querySelectorAll('input[name="product_areas"]:checked');
-          var ucChecked = document.querySelectorAll('input[name="use_cases"]:checked');
-          var active = paChecked.length > 0 || ucChecked.length > 0;
-
-          var paVals = Array.prototype.map.call(paChecked, function (el) {
-            return el.value;
-          });
-          var ucVals = Array.prototype.map.call(ucChecked, function (el) {
-            return el.value;
-          });
-
-          function cardMatchesFilter(card) {
-            var pas = (card.getAttribute("data-product-areas") || "")
-              .split(/\s+/)
-              .filter(Boolean);
-            var ucs = (card.getAttribute("data-use-cases") || "")
-              .split(/\s+/)
-              .filter(Boolean);
-            var paOk =
-              paVals.length === 0 ||
-              paVals.some(function (p) {
-                return pas.indexOf(p) !== -1;
-              });
-            var ucOk =
-              ucVals.length === 0 ||
-              ucVals.some(function (u) {
-                return ucs.indexOf(u) !== -1;
-              });
-            return paOk && ucOk;
-          }
-
-          if (!active) {
-            clearFilteredLayout(mainEl);
-            return mainEl.querySelectorAll(".card-placeholder").length;
-          }
-
-          var bucket = getOrCreateFilterBucket(mainEl);
-          var ordered = Array.prototype.slice
-            .call(mainEl.querySelectorAll(".card-placeholder"))
-            .sort(function (a, b) {
-              return a._filterOrder - b._filterOrder;
-            });
-
-          var visible = 0;
-          ordered.forEach(function (card) {
-            if (cardMatchesFilter(card)) {
-              bucket.appendChild(card);
-              card.removeAttribute("hidden");
-              visible += 1;
-            } else {
-              if (card._filterHomeGrid) {
-                card._filterHomeGrid.appendChild(card);
-              }
-              card.setAttribute("hidden", "");
-            }
-          });
-
-          mainEl.classList.add("main--filtered");
-          return visible;
-        }
-
-        function updateFiltersCallout() {
-          var callout = document.getElementById("filters-active-callout");
-          var summaryEl = document.getElementById("filters-active-summary");
-          if (!callout || !summaryEl) return;
-
-          var pa = document.querySelectorAll('input[name="product_areas"]:checked').length;
-          var uc = document.querySelectorAll('input[name="use_cases"]:checked').length;
-          var active = pa > 0 || uc > 0;
-
-          function commit() {
-            var nProducts = applyProductFilters();
-
-            if (!active) {
-              callout.setAttribute("hidden", "");
-              summaryEl.textContent = "";
-              return;
-            }
-
-            callout.removeAttribute("hidden");
-
-            var head = "Showing " + nProducts + " products";
-            var tail = "";
-            if (pa > 0 && uc > 0) {
-              tail =
-                " across " +
-                uc +
-                (uc === 1 ? " use case" : " use cases") +
-                " and " +
-                pa +
-                (pa === 1 ? " product area" : " product areas");
-            } else if (uc > 0) {
-              tail =
-                " across " +
-                uc +
-                (uc === 1 ? " use case" : " use cases");
-            } else {
-              tail =
-                " across " +
-                pa +
-                (pa === 1 ? " product area" : " product areas");
-            }
-            summaryEl.textContent = head + tail + ".";
-          }
-
-          if (document.startViewTransition) {
-            document.startViewTransition(commit);
-          } else {
-            commit();
-          }
-        }
-
-        function setOpen(wrap, open) {
-          var trigger = wrap.querySelector(".filter-multiselect__trigger");
-          var panel = wrap.querySelector(".filter-multiselect__panel");
-          if (!trigger || !panel) return;
-          if (open) {
-            panel.removeAttribute("hidden");
-            trigger.setAttribute("aria-expanded", "true");
-          } else {
-            panel.setAttribute("hidden", "");
-            trigger.setAttribute("aria-expanded", "false");
-          }
-        }
-
-        function closeAllExcept(current) {
-          wraps.forEach(function (w) {
-            if (w !== current) setOpen(w, false);
-          });
-        }
-
-        wraps.forEach(function (wrap) {
-          var trigger = wrap.querySelector(".filter-multiselect__trigger");
-          var panel = wrap.querySelector(".filter-multiselect__panel");
-          var valueEl = wrap.querySelector(".filter-multiselect__value");
-          var placeholder = wrap.getAttribute("data-filter-placeholder") || "Filter";
-          var checkboxes = panel
-            ? panel.querySelectorAll('input[type="checkbox"]')
-            : [];
-
-          if (!trigger || !panel || !valueEl) return;
-
-          function updateTriggerText() {
-            var selected = [];
-            checkboxes.forEach(function (cb) {
-              if (cb.checked) {
-                var span = cb.closest("label") && cb.closest("label").querySelector("span");
-                if (span) selected.push(span.textContent.trim());
-              }
-            });
-            var count = selected.length;
-            var filterName =
-              checkboxes.length && checkboxes[0].getAttribute("name")
-                ? checkboxes[0].getAttribute("name")
-                : "";
-
-            if (count === 0) {
-              valueEl.textContent = placeholder;
-            } else if (filterName === "product_areas") {
-              valueEl.textContent = "Product areas (" + count + ")";
-            } else if (filterName === "use_cases") {
-              valueEl.textContent = "Use cases (" + count + ")";
-            } else if (count === 1) {
-              valueEl.textContent = selected[0];
-            } else {
-              valueEl.textContent = count + " selected";
-            }
-
-            var summary;
-            if (count === 0) {
-              summary = "None selected";
-            } else if (filterName === "product_areas") {
-              summary =
-                count +
-                " product " +
-                (count === 1 ? "area" : "areas") +
-                " selected";
-            } else if (filterName === "use_cases") {
-              summary =
-                count + " use " + (count === 1 ? "case" : "cases") + " selected";
-            } else {
-              summary = count === 1 ? selected[0] : count + " selected";
-            }
-            trigger.setAttribute("aria-label", placeholder + ". " + summary);
-          }
-
-          trigger.addEventListener("click", function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            var opening = panel.hasAttribute("hidden");
-            if (opening) closeAllExcept(wrap);
-            setOpen(wrap, opening);
-          });
-
-          checkboxes.forEach(function (cb) {
-            cb.addEventListener("change", function () {
-              updateTriggerText();
-              updateFiltersCallout();
-            });
-          });
-
-          updateTriggerText();
-        });
-
-        var clearBtn = document.getElementById("filters-clear-all");
-        if (clearBtn) {
-          clearBtn.addEventListener("click", function () {
-            document
-              .querySelectorAll('input[name="product_areas"], input[name="use_cases"]')
-              .forEach(function (cb) {
-                cb.checked = false;
-              });
-            var onePa = document.querySelector('input[name="product_areas"]');
-            var oneUc = document.querySelector('input[name="use_cases"]');
-            if (onePa) onePa.dispatchEvent(new Event("change", { bubbles: true }));
-            if (oneUc) oneUc.dispatchEvent(new Event("change", { bubbles: true }));
-          });
-        }
-
-        updateFiltersCallout();
-
-        document.addEventListener("click", function (e) {
-          wraps.forEach(function (wrap) {
-            if (!wrap.contains(e.target)) setOpen(wrap, false);
-          });
-        });
-
-        document.addEventListener("keydown", function (e) {
-          if (e.key === "Escape") {
-            wraps.forEach(function (wrap) {
-              setOpen(wrap, false);
-            });
-          }
-        });
-      })();
-
+    <script src="homepage.js" defer></script>
+    <script type="module">
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        import("./assets/js/NouveauBloomWave/NouveauBloomWave.js");
+      }
     </script>
   </body>
 </html>
