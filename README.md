@@ -6,7 +6,11 @@
 
 Clone URL: `https://github.com/barbieriletizia/All-Products-LP-Test-B.git`
 
-Your local folder path is only a checkout; **`origin`** should always point at the URL above.
+Local checkout on your machine (example):
+
+`/Users/letizia/Sites/All Products LP Test B`
+
+That path is **only your working copy**. **`origin`** should always point at the GitHub URL above.
 
 ---
 
