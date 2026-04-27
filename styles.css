@@ -1126,9 +1126,9 @@ main {
 .card-placeholder__label {
   margin: 0;
   font-family: var(--font-sans);
-  font-size: var(--heading-sm-size);
+  font-size: 20px;
   font-weight: 400;
-  line-height: var(--heading-sm-line);
+  line-height: 22px;
   letter-spacing: var(--heading-sm-tracking);
   color: var(--color-heading);
   display: inline-flex;
