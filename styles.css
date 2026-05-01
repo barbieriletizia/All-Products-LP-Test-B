@@ -1700,7 +1700,7 @@ main {
 }
 
 .footer-directory__cta {
-  margin: 0 0 16px;
+  margin: 16px 0 0;
 }
 
 .footer-directory__cta-link {
