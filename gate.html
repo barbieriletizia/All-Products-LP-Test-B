@@ -106,7 +106,12 @@
         var KEY = "stripe_lp_unlock";
 
         try {
+          if (localStorage.getItem(KEY) === "1") {
+            location.replace("index.html");
+            return;
+          }
           if (sessionStorage.getItem(KEY) === "1") {
+            localStorage.setItem(KEY, "1");
             location.replace("index.html");
             return;
           }
@@ -121,7 +126,7 @@
           err.textContent = "";
           if ((input.value || "") === PASS) {
             try {
-              sessionStorage.setItem(KEY, "1");
+              localStorage.setItem(KEY, "1");
             } catch (ex) {}
             location.replace("index.html");
           } else {

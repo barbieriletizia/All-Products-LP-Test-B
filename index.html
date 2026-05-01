@@ -19,7 +19,11 @@
       (function () {
         var KEY = "stripe_lp_unlock";
         try {
-          if (sessionStorage.getItem(KEY) === "1") return;
+          if (localStorage.getItem(KEY) === "1") return;
+          if (sessionStorage.getItem(KEY) === "1") {
+            localStorage.setItem(KEY, "1");
+            return;
+          }
         } catch (e) {}
         location.replace("gate.html");
       })();
