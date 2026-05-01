@@ -950,16 +950,16 @@ main {
 
 /* All-products LP only (.page): while Products mega/scrim are active, keep #main-content
    below .page-top-art so stacking is page < scrim < mega (homepage.css z-index 355 / 401). */
-.page:has(.home-products-nav:hover) > .page-top-art,
+.page:has(.home-nav-mega-wrap:hover) > .page-top-art,
 .page:has(.home-mega:hover) > .page-top-art,
-.page:has(.home-products-nav:focus-within) > .page-top-art,
+.page:has(.home-nav-mega-wrap:focus-within) > .page-top-art,
 .page:has(.home-mega:focus-within) > .page-top-art {
   z-index: 50;
 }
 
-.page:has(.home-products-nav:hover) #main-content,
+.page:has(.home-nav-mega-wrap:hover) #main-content,
 .page:has(.home-mega:hover) #main-content,
-.page:has(.home-products-nav:focus-within) #main-content,
+.page:has(.home-nav-mega-wrap:focus-within) #main-content,
 .page:has(.home-mega:focus-within) #main-content {
   z-index: 1;
 }
@@ -1697,6 +1697,25 @@ main {
 
 .footer-directory__heading--spaced {
   margin-top: 48px;
+}
+
+.footer-directory__cta {
+  margin: 0 0 16px;
+}
+
+.footer-directory__cta-link {
+  font-family: var(--font-sans);
+  font-size: var(--text-md-size);
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0;
+  color: var(--color-action);
+  text-decoration: none;
+  font-feature-settings: "ss01" 1;
+}
+
+.footer-directory__cta-link:hover {
+  color: var(--color-heading);
 }
 
 .footer-directory__list {
