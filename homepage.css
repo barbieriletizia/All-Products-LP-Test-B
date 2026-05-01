@@ -330,6 +330,11 @@ body.home-page-body .page-frame > .site-footer::after {
   opacity: 1;
 }
 
+.home-mega__item:hover .home-mega__item-title,
+.home-mega__item:focus-visible .home-mega__item-title {
+  color: #2e2b8c;
+}
+
 .home-mega__item-title {
   margin: 0;
   font-family: var(--font-sans);
@@ -417,6 +422,7 @@ body.home-page-body .page-frame > .site-footer::after {
 .home-mega__footer-cta:hover,
 .home-mega__footer-cta:focus-visible {
   text-decoration: none;
+  color: #2e2b8c;
 }
 
 .home-mega__more-link {
@@ -472,6 +478,11 @@ body.home-page-body .page-frame > .site-footer::after {
   width: 12px;
   margin-left: 6px;
   opacity: 1;
+}
+
+.home-mega__more-link:hover .home-mega__more-link-title,
+.home-mega__more-link:focus-visible .home-mega__more-link-title {
+  color: #2e2b8c;
 }
 
 .home-mega__more-link-desc {
